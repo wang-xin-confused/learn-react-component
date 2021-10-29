@@ -11,8 +11,9 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+      uses: JamesIves/github-pages-deploy-action@releases/v2
       env:
+        CI: true
         ACCESS_TOKEN: ${{ secrets.ACTIONS }}
         BRANCH: gh-pages
         FOLDER: storybook-static
