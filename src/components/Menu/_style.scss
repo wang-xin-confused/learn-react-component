@@ -39,11 +39,13 @@
       }
     }
   }
+  // 垂直的时候 hover上去箭头不会反转  因为hover状态的权重不够高
   .is-vertical {
     .arrow-icon {
       transform: rotate(0deg) !important;
     }
   }
+  // 垂直切打开的时候icon发生反转
   .is-vertical.is-opened {
     .arrow-icon {
       transform: rotate(180deg) !important;
@@ -51,7 +53,9 @@
   }
   // 默认是不显示dorpdown的
   .viking-submenu {
-    display: none;
+    // display: none; 跟opacity 属性会有冲突  因为display 从none 转化 block 动画效果会失效 
+    // display 不是标准的支持amimation 的属性 所有transition不起作用
+    // display: none;
     list-style:none;
     padding-left: 0;
     white-space: nowrap;
@@ -66,9 +70,9 @@
       }
     }
   }
-  // 有menu-open 就显示
+  // 有menu-open 就显示  使用transion Group 组件后就使用它的钩子属性就好
   .viking-submenu.menu-opened {
-    display: block;
+    // display: block;
   }
 }
 .menu-horizontal {
