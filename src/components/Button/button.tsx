@@ -1,6 +1,7 @@
 import React, { FC, ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
 import classNames from "classnames";
 
+// 字符串字面量
 export type ButtonSize = 'lg' | 'sm'
 export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
 
@@ -29,7 +30,7 @@ export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
  * ~~~
  */
 export const Button: FC<ButtonProps> = (props) => {
-  const { 
+  const {
     btnType,
     className,
     disabled,

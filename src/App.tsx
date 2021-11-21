@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { Hello, LikeButton, UseEffectLearn1, UseEffectLearn2, UseEffectLearn3 } from './components/react-learn';
+
 import Button from './components/Button';
 
 import Menu from './components/Menu/menu';
@@ -20,8 +23,21 @@ library.add(fas)
 function App() {
 
   const [show, setShow] = useState(false)
+  const [UseEffectLearn3show, setUseEffectLearn3Show] = useState(true)
+
   return (
     <div className="App" style={{ margin: 20 }}>
+
+
+      <Hello />
+      <LikeButton />
+      <UseEffectLearn1 />
+      {/* <UseEffectLearn2 /> */}
+      {/* {UseEffectLearn3show && <UseEffectLearn3 />}
+      <p>
+        <button onClick={() => { setUseEffectLearn3Show(!UseEffectLearn3show) }}>toggle</button>
+      </p> */}
+
       <Icon icon='arrow-down' theme="danger" size="10x" />
       <Button className='custom'>Hello</Button>
       <Button disabled>disabled button</Button>
