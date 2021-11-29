@@ -30,8 +30,8 @@ function App() {
 
 
       <Hello />
-      <LikeButton />
-      <UseEffectLearn1 />
+      {/* <LikeButton /> */}
+      {/* <UseEffectLearn1 /> */}
       {/* <UseEffectLearn2 /> */}
       {/* {UseEffectLearn3show && <UseEffectLearn3 />}
       <p>
