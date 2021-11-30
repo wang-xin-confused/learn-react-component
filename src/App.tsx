@@ -15,6 +15,8 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import Transition from './components/Transition/transition'
 
+import Input from './components/Input/input'
+
 
 
 
@@ -37,7 +39,11 @@ function App() {
       <p>
         <button onClick={() => { setUseEffectLearn3Show(!UseEffectLearn3show) }}>toggle</button>
       </p> */}
-
+      <Input
+        style={{ width: '300px' }}
+        placeholder="input with icon"
+        icon="search"
+      />
       <Icon icon='arrow-down' theme="danger" size="10x" />
       <Button className='custom'>Hello</Button>
       <Button disabled>disabled button</Button>

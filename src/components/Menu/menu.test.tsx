@@ -1,11 +1,22 @@
 import React from 'react'
 import { render, RenderResult, fireEvent, waitFor, cleanup } from '@testing-library/react'
-
 //  组件
 import Menu, { MenuProps } from './menu'
 import MenuItem from './menuItem'
 import SubMenu from './subMenu'
 
+jest.mock('../Icon/icon', () => {
+  return () => {
+    return <i className="fa" />
+  }
+})
+jest.mock('react-transition-group', () => {
+  return {
+    CSSTransition: (props: any) => {
+      return props.children
+    }
+  }
+})
 
 const testProps: MenuProps = {
   defaultIndex: '0',
@@ -15,7 +26,7 @@ const testProps: MenuProps = {
 const testVerProps: MenuProps = {
   defaultIndex: '0',
   mode: 'vertical',
-  // defaultOpenSubMenus: ['4']
+  defaultOpenSubMenus: ['4']
 }
 const generateMenu = (props: MenuProps) => {
   return (
@@ -90,14 +101,17 @@ describe('test Menu and MenuItem component in default(horizontal) mode', () => {
     expect(disabledElement).not.toHaveClass('is-active')
     expect(testProps.onSelect).not.toHaveBeenCalledWith('1')
   })
+
   it('should render vertical mode when mode is set to vertical', () => {
     cleanup()
     wrapper2 = render(generateMenu(testVerProps))
     const menuElement = wrapper2.getByTestId('test-menu')
     expect(menuElement).toHaveClass('menu-vertical')
   })
+
   // 使用async 可以test 异步操作
   it('should show dropdown items when hover on subMenu', async () => {
+
     // queryByText 与getByText 区别就是会返回element 或者 null  与getByText找到的话返回目标元素,找不到直接test报错 断言失败了
     expect(wrapper.queryByText('drop1')).not.toBeVisible() // 不出现
     const dropdownElement = wrapper.getByText('dropdown') // 获取到dropdown文本的元素
@@ -116,4 +130,6 @@ describe('test Menu and MenuItem component in default(horizontal) mode', () => {
       expect(wrapper.queryByText('drop1')).not.toBeVisible()
     })
   })
+
+
 })
